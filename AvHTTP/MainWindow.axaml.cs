@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Text.Json;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
@@ -61,6 +63,20 @@ namespace AvHTTP
                 button.Background = Brushes.HotPink;
             }
         }
+        private Dictionary<string, string> ParseObject(string? jsonText)
+        {
+            if (string.IsNullOrWhiteSpace(jsonText)) return new Dictionary<string, string>();
 
+            try
+            {
+                var obj = JsonSerializer.Deserialize<Dictionary<string, string>>(jsonText);
+                return obj ?? new Dictionary<string, string>();
+            }
+            catch (JsonException ex)
+            {
+                this.FindControl<TextBox>("ResponseTextBox").Text = $"JSON Parse Error: {ex.Message}";
+                return new Dictionary<string, string>();
+            }
+        }
     }
 }
