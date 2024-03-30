@@ -5,7 +5,34 @@
         mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
         x:Class="AvHTTP.MainWindow"
         Title="AvHTTP - HTTP basic tester"
-        >
+        Background="#FF2D2D30">
+
+	<Window.Styles>
+		<Style Selector="Button">
+			<Setter Property="Background" Value="#FF3E3E42"/>
+			<Setter Property="Foreground" Value="#FFCCCCCC"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Padding" Value="10,5"/>
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="Margin" Value="5,0"/>
+		</Style>
+		<Style Selector="TextBox">
+			<Setter Property="Background" Value="#FF2D2D30"/>
+			<Setter Property="Foreground" Value="#FFCCCCCC"/>
+			<Setter Property="BorderBrush" Value="#FF3E3E42"/>
+			<Setter Property="Padding" Value="5"/>
+		</Style>
+		<Style Selector="TextBox:focus">
+			<Setter Property="Foreground" Value="#FFCCCCCC"/>
+		</Style>
+		<Style Selector="TextBlock">
+			<Setter Property="Foreground" Value="#FFCCCCCC"/>
+		</Style>
+		<Style Selector="Border">
+			<Setter Property="Background" Value="#FF1E1E1E"/>
+			<Setter Property="BorderBrush" Value="#FF3E3E42"/>
+		</Style>
+	</Window.Styles>
 
 	<Grid RowDefinitions="Auto,*">
 		<StackPanel Margin="10" Grid.Row="0">
@@ -32,7 +59,7 @@
 
 		<Border BorderBrush="Gray" BorderThickness="0,1,0,0" Grid.Row="1">
 			<ScrollViewer VerticalScrollBarVisibility="Auto">
-				<TextBox x:Name="ResponseTextBox" TextWrapping="Wrap" Padding="10" IsReadOnly="True"/>
+				<TextBox x:Name="ResponseTextBox" Background="#FF2D2D30" Foreground="#FFCCCCCC" TextWrapping="Wrap" Padding="10" IsReadOnly="True"/>
 			</ScrollViewer>
 		</Border>
 	</Grid>
