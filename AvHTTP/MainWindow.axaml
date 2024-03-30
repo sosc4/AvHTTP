@@ -2,8 +2,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
         x:Class="AvHTTP.MainWindow"
-        Title="AvHTTP">
-    Welcome to Avalonia!
+        Title="AvHTTP - HTTP basic tester"
+        >
+
+	<Grid RowDefinitions="Auto,*">
+		<StackPanel Margin="10" Grid.Row="0">
+			<TextBlock Text="URL" FontWeight="Bold"/>
+			<TextBox x:Name="UrlTextBox" Watermark="Enter URL..." Margin="0,5,0,10"/>
+
+			<TextBlock Text="Headers" FontWeight="Bold"/>
+			<TextBox x:Name="HeadersTextBox" Watermark="Enter headers as JSON (e.g., {'Content-Type': 'application/json'})" Margin="0,5,0,10" AcceptsReturn="True" Height="100"/>
+
+			<TextBlock Text="Data" FontWeight="Bold"/>
+			<TextBox x:Name="DataTextBox" Watermark="Enter data as JSON (e.g., {'key': 'value'})" Margin="0,5,0,10" AcceptsReturn="True" Height="100"/>
+
+			<StackPanel Orientation="Horizontal" Spacing="5">
+				<Button x:Name="GetButton" Content="GET" Click="OnMethodSet"/>
+				<Button x:Name="PostButton" Content="POST" Click="OnMethodSet"/>
+				<Button x:Name="PutButton" Content="PUT" Click="OnMethodSet"/>
+				<Button x:Name="DeleteButton" Content="DELETE" Click="OnMethodSet"/>
+			</StackPanel>
+
+			<Button x:Name="SendButton" Content="SEND" Click="OnSendClick" Margin="5,10,0,0"/>
+
+			<TextBlock Text="Response" FontWeight="Bold" Margin="0,10,0,0"/>
+		</StackPanel>
+
+		<Border BorderBrush="Gray" BorderThickness="0,1,0,0" Grid.Row="1">
+			<ScrollViewer VerticalScrollBarVisibility="Auto">
+				<TextBox x:Name="ResponseTextBox" TextWrapping="Wrap" Padding="10" IsReadOnly="True"/>
+			</ScrollViewer>
+		</Border>
+	</Grid>
 </Window>
